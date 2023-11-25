@@ -36,6 +36,9 @@ export default function useMarkets(perPage: number) {
                 }
             }
         };
+        return () => {
+            ws.close();
+        }
     } , [])
 
     return {loading: isPending, markets, page, onChangePage, total: data?.count ? data?.count : 0 }
